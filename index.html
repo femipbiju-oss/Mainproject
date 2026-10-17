@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kerala Disaster Response System</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Leaflet Draw -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+    >
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="top-header">
+
+        <div class="header-content">
+
+            <div class="brand-section">
+
+                <div class="brand-icon">
+                    <span>⌁</span>
+                </div>
+
+                <div>
+                    <h1>DISASTER RESPONSE SYSTEM</h1>
+                    <p>MISSION-ORIENTED INTELLIGENT PROCUREMENT AND RESOURCE MANAGEMENT</p>
+                </div>
+
+            </div>
+
+            <div class="header-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-container">
+
+        <!-- Page Heading -->
+
+        <section class="page-heading">
+
+            <div>
+                <span class="section-label">KERALA DISASTER MANAGEMENT</span>
+
+                <h2>
+                    AFFECTED  POPULATION
+                    <span>ESTIMATION</span>
+                </h2>
+
+                <p>
+                    Select the disaster details and mark the affected area
+                    on the Kerala map to estimate the affected population.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= DETAILS CARD ================= -->
+
+        <section class="details-card">
+
+            <div class="card-title">
+
+                <div class="title-icon">
+                    <span>01</span>
+                </div>
+
+                <div>
+                    <h3>DISASTER DETAILS
+                    </h3>
+                    <p>Enter the basic information about the disaster.</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <!-- Disaster Type -->
+
+                <div class="form-group">
+
+                    <label for="disasterType">
+                        Disaster Type
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">⚠</span>
+
+                        <select id="disasterType">
+
+                            <option value="">
+                                SELECT DISASTER TYPE
+                            </option>
+
+                            <option value="Flood">
+                                Flood
+                            </option>
+
+                            <option value="Landslide">
+                                Landslide
+                            </option>
+
+                            <option value="Cyclone">
+                                Cyclone
+                            </option>
+
+                            <option value="Earthquake">
+                                Earthquake
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Locality -->
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Locality / Place
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">⌖</span>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="ENTER LOCALITY,VILLAGE OR PLACE"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MAP CARD ================= -->
+
+        <section class="map-card">
+
+            <div class="map-card-header">
+
+                <div class="map-heading">
+
+                    <div class="title-icon map-icon">
+                        <span>02</span>
+                    </div>
+
+                    <div>
+
+                        <h3>SELECT AFFECTED AREA</h3>
+
+                        <p>
+                            Draw the disaster-affected region on the Kerala map.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="map-badge">
+
+                    <span class="live-dot"></span>
+
+                    Kerala Focus
+
+                </div>
+
+            </div>
+
+
+            <!-- Instructions -->
+
+            <div class="instruction-box">
+
+                <div class="instruction-symbol">
+                    ⓘ
+                </div>
+
+                <div>
+
+                    <strong>How to select the affected area</strong>
+
+                    <p>
+                        Use the polygon or rectangle tool on the map to mark
+                        the affected region. You can zoom in to select a
+                        smaller locality or village.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Map -->
+
+            <div class="map-wrapper">
+
+                <div id="map"></div>
+
+            </div>
+
+
+            <!-- Map status -->
+
+            <div class="map-status" id="mapStatus">
+
+                <span class="status-circle"></span>
+
+                No affected area selected
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ACTION ================= -->
+
+        <section class="action-section">
+
+            <button id="calculateBtn" class="calculate-button">
+
+                <span class="button-icon">
+                    ◈
+                </span>
+
+                <span>
+                    Calculate Affected Population
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <!-- ================= RESULT ================= -->
+
+        <section id="result" class="result-card">
+
+            <div class="result-icon">
+                👥
+            </div>
+
+            <div class="result-content">
+
+                <span class="result-label">
+                    ESTIMATED AFFECTED POPULATION
+                </span>
+
+                <div id="populationValue" class="population-value">
+                    —
+                </div>
+
+                <p>
+                    Population estimated from the selected affected region
+                    using WorldPop data.
+                </p>
+
+            </div>
+            <button
+    id="requirementsBtn"
+    class="requirements-btn"
+    style="display: none;"
+>
+    Generate Requirements
+    <span>→</span>
+</button>
+
+        </section>
+
+
+        <!-- ================= FOOTER NOTE ================= -->
+
+        <div class="bottom-note">
+
+            <span>WorldPop</span>
+
+            <span class="separator">•</span>
+
+            <span>Geospatial Analysis</span>
+
+            <span class="separator">•</span>
+
+            <span>Kerala</span>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Leaflet Draw -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+
+    <!-- Our JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

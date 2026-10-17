@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Resource Requirements | Disaster Response System</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<!-- CSS -->
+<link rel="stylesheet" href="requirements.css">
+```
+
+</head>
+
+<body>
+
+```
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div class="header-content">
+
+        <div class="brand-section">
+
+            <div class="brand-icon">
+                ⌁
+            </div>
+
+            <div>
+                <h1>DISASTER RESPONSE SYSTEM</h1>
+                <p>MISSION-ORIENTED INTELLIGENT PROCUREMENT AND RESOURCE MANAGEMENT</p>
+            </div>
+
+        </div>
+
+        <div class="header-status">
+            <span class="status-dot"></span>
+            System Online
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-container">
+
+    <!-- Page Heading -->
+
+    <section class="page-heading">
+
+        <span class="section-label">
+            MISSION RESOURCE PLANNING
+        </span>
+
+        <h2>
+            Resource Requirements
+            <span>Generation</span>
+        </h2>
+
+        <p>
+            Generate essential resource requirements based on the
+            estimated affected population.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MISSION DETAILS ================= -->
+
+    <section class="mission-card">
+
+        <div class="card-heading">
+
+            <div class="title-icon">
+                01
+            </div>
+
+            <div>
+                <h3>Mission Details</h3>
+                <p>
+                    Information received from the population estimation module.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="mission-grid">
+
+            <!-- Disaster -->
+
+            <div class="mission-item">
+
+                <span class="item-label">
+                    DISASTER TYPE
+                </span>
+
+                <strong id="disasterType">
+                    —
+                </strong>
+
+            </div>
+
+
+            <!-- Location -->
+
+            <div class="mission-item">
+
+                <span class="item-label">
+                    LOCATION
+                </span>
+
+                <strong id="location">
+                    —
+                </strong>
+
+            </div>
+
+
+            <!-- Population -->
+
+            <div class="mission-item population-item">
+
+                <span class="item-label">
+                    AFFECTED POPULATION
+                </span>
+
+                <strong id="population">
+                    —
+                </strong>
+
+                <span class="people-label">
+                    people
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GENERATION CARD ================= -->
+
+    <section class="generation-card">
+
+        <div class="generation-heading">
+
+            <div class="title-icon blue">
+                02
+            </div>
+
+            <div>
+                <h3>Generate Requirements</h3>
+
+                <p>
+                    Calculate the estimated quantity of essential
+                    resources required for the affected population.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Rule information -->
+
+        <div class="info-box">
+
+            <div class="info-icon">
+                ⓘ
+            </div>
+
+            <div>
+                <strong>Requirement estimation</strong>
+
+                <p>
+                    Quantities are calculated using predefined
+                    resource-per-person planning rules. These values
+                    can be configured later according to disaster type,
+                    duration and operational requirements.
+                </p>
+            </div>
+
+        </div>
+
+
+
+
+       <!-- Generate Button -->
+
+<button 
+    id="generateBtn"
+    class="generate-button"
+>
+
+    <span class="button-icon">
+        ◈
+    </span>
+
+    <span>
+        Generate Requirements
+    </span>
+
+    <span class="button-arrow">
+        →
+    </span>
+
+</button>
+    <!-- ================= RESULT ================= -->
+     <button
+    type="button"
+    id="generateRequirementsBtn"
+    class="requirements-btn"
+    style="display: none;"
+>
+    Generate Requirements
+    <span>→</span>
+</button>
+
+    <section
+        id="requirementsResult"
+        class="requirements-result"
+    >
+
+        <div class="result-header">
+
+            <div>
+
+                <span class="section-label">
+                    GENERATED REQUIREMENTS
+                </span>
+
+                <h3>
+                    Essential Resource Requirements
+                </h3>
+
+                <p>
+                    Estimated quantities based on the affected population.
+                </p>
+
+            </div>
+
+            <div class="result-population">
+
+                <span>
+                    Population
+                </span>
+
+                <strong id="resultPopulation">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- Requirements Table -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Resource
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th>
+                            Unit
+                        </th>
+
+                        <th>
+                            Planning Basis
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="requirementsTable">
+
+                    <!-- JavaScript will insert rows -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Note -->
+
+        <div class="result-note">
+
+            <span>ⓘ</span>
+
+            <p>
+                These quantities are planning estimates. Final
+                procurement quantities can be adjusted based on
+                mission duration, field conditions and available stock.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= NEXT STEP ================= -->
+
+    <section
+        id="nextStep"
+        class="next-step"
+    >
+
+        <div>
+
+            <span class="next-label">
+                NEXT MODULE
+            </span>
+
+            <h3>
+                Vendor Comparison
+            </h3>
+
+            <p>
+                Compare vendors based on price, availability and
+                delivery time for the required resources.
+            </p>
+
+        </div>
+
+        <button
+            id="vendorBtn"
+            class="vendor-button"
+        >
+            Continue to Vendor Comparison
+            <span>→</span>
+        </button>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="bottom-note">
+
+        <span>WorldPop</span>
+
+        <span class="separator">•</span>
+
+        <span>Resource Planning</span>
+
+        <span class="separator">•</span>
+
+        <span>Kerala Disaster Response</span>
+
+    </div>
+
+</main>
+
+
+<!-- JavaScript -->
+<script src="requirements.js"></script>
+```
+
+</body>
+
+</html>
